@@ -15,6 +15,8 @@ var myObj =
 {'name':'Krishnakath', 'age': 22, 'occupation': "Programmer"},
 {'name':'Venketraman', 'age': 28, 'occupation': "Programmer"}];
 
+
+// Getting all the programmers
 function getAllProgrammers(myObj){
 	result = [];
 	myObj.forEach(function (item){
@@ -25,6 +27,34 @@ function getAllProgrammers(myObj){
   result = result.reverse();
 	return result;
 }
-
 console.log(getAllProgrammers(myObj));
+
+
+// Arranging them in decreasing age
+myObj = myObj.sort(function(a,b){return ('' + a.age).localeCompare(b.age)});
+myObj = myObj.reverse();
+console.log(myObj);
+
+// Adding them according to their occupation
+function objectOfObjects(myObj){
+	var finalresult = [];
+	var teamLeads = [];
+	var programmers = [];
+	myObj.forEach(function (item){
+	 if(item.occupation == 'Team Leader'){
+		 teamLeads.push(item);
+	 }else if(item.occupation == 'Programmer'){
+      programmers.push(item);
+	}
+});finalresult.push(teamLeads);
+	finalresult.push(programmers);
+	
+	return finalresult;
+}
+console.log(objectOfObjects(myObj));
+
+//using map to get all names
+var names = [];
+names = myObj.map(function(a){return a.name});
+console.log(names);
 
